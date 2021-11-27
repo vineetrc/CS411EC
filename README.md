@@ -47,6 +47,7 @@ BENCHMARKS Given for the JOIN of LINEITEMS and ORDERS on ORDERKEY
         Iteration 9 took: 474220 microseconds
         AVG TIME per join is 467985 microseconds
 
-    DISCLAIMER: Since DATASET was too large, used Dr.Park's recoomendation and used a hash to cut the overall amount of data. Used a hash on ORDERKEY with a threshold of hash(ORDERKEY) < 0.01
 
-    Note that in the code implementation, the commented Code contains the hash filtering mechanism. It is commented out since it is not needed for running the smaller tests on Nation and Region Files Verifying for Correctness.
+DISCLAIMER: Since DATASET was too large, used Dr.Park's recoomendation and used a hash to cut the overall amount of data. Used a hash on ORDERKEY with a threshold of hash(ORDERKEY) < 0.01
+
+Note that in the code implementation, the commented Code contains the hash filtering mechanism. It is commented out since it is not needed for running the smaller tests on Nation and Region Files Verifying for Correctness.
