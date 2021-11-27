@@ -27,38 +27,33 @@ Join::Join(std::string input1, std::string input2, std::string join_key){
             if(i ==0){
                 if (line.substr(0, pos).compare(join_key) == 0){
                     join_key_idx1 = cols1.size();
-                    std::cout << join_key_idx1 << std::endl;
                 }
                 cols1.push_back(line.substr(0, pos));
             }
+            // else if (start && std::abs((((int) hash_fn(line.substr(0, pos)))%10000000)/10000000.0) > 0.1){
+            //     num = std::abs((((int) hash_fn(line.substr(0, pos)))%10000000)/10000000.0); 
+            //     start = false;
+            //     break;
+            // }
             else{
                 words.push_back(line.substr(0, pos));
             }
             line.erase(0, pos + delim.length());
             start = false;
         }
-        if (i!=0){
+        if (i!=0){ //&& num < 0.1
             table1.push_back(words);
-            std::cout << i << std::endl;
         }
         
         i++;
     }
-    std::cout << table1.size() << std::endl;
+    
     my_file.close();
 
-    //std:cout << table1[0].size();
 
-    // for (int i = 0; i < table1.size(); i++){
-    //     for (int j = 0; j < table1[0].size(); j++)
-    //        std::cout<< table1[i][j];
-    //     std::cout << std::endl;
-    // }
-
-    cout << "Halwfawy less gooo" << std::endl;
+    cout << "Halfway Done with Initialization" << std::endl;
 
     my_file.open(input2);
-    // std::string line;
 
     i = 0;
     while(getline(my_file, line)){        
@@ -75,15 +70,19 @@ Join::Join(std::string input1, std::string input2, std::string join_key){
                 }
                 cols2.push_back(line.substr(0, pos));
             }
+            // else if (start && std::abs((((int) hash_fn(line.substr(0, pos)))%10000000)/10000000.0) > 0.1){
+            //     num = std::abs((((int) hash_fn(line.substr(0, pos)))%10000000)/10000000.0); 
+            //     start = false;
+            //     break;
+            // }
             else{
                 words.push_back(line.substr(0, pos));
             }
             line.erase(0, pos + delim.length());
             start = false;
         }
-        if (i!=0){
+        if (i!=0){ // && num < 0.1
             table2.push_back(words);
-            std::cout << i << std::endl;
         }
         
         i++;
@@ -91,15 +90,6 @@ Join::Join(std::string input1, std::string input2, std::string join_key){
 
     my_file.close();
 
-    //std:cout << "***************************"<<std::endl;
-
-    // for (int i = 0; i < table2.size(); i++){
-    //     for (int j = 0; j < table2[0].size(); j++)
-    //        std::cout<< table2[i][j];
-    //     std::cout << std::endl;
-    // }
-    
-    // std::cout<< join_key_idx1 << "   " << join_key_idx2<< std::endl;
 }
 
 
@@ -116,7 +106,7 @@ void Join::LoopJoin(std::string output){
     }
     out << "|" << endl;
 
-
+    // nested loop
     for (int i = 0; i < table1.size(); i++){
         for (int j = 0; j < table2.size(); j++){
             if (table1[i][join_key_idx1].compare(table2[j][join_key_idx2]) == 0){
