@@ -52,6 +52,15 @@ BENCHMARKS for the joins of LINEITEMS and ORDERS on ORDERKEY
         AVG TIME per join is 467985 microseconds
 
 
+TAKEAWAYS: The NESTED LOOP JOIN takes significantly more time on average than the HASH Join. This is primarily because the HASH Join takes advantage of the O(1) lookup time of a hashmap while the NESTED_LOOP has 2 loops making it an O(n^2) algorithm generally. 
+
+According to the textbook:
+
+BLOCK-BASED NESTED LOOP JOIN COST: B(R) + B(R)*B(S)
+
+
+HASH JOIN COST: B(R) + B(S)
+
 DISCLAIMER: Since DATASET was too large, used Dr.Park's recoomendation and used a hash to cut the overall amount of data. Used a hash on ORDERKEY with a threshold of hash(ORDERKEY) < 0.01
 
 Note that in the code implementation, the commented Code contains the hash filtering mechanism. It is commented out since it is not needed for running the smaller tests on Nation and Region Files.
