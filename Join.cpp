@@ -31,18 +31,13 @@ Join::Join(std::string input1, std::string input2, std::string join_key){
                 }
                 cols1.push_back(line.substr(0, pos));
             }
-            else if (start && std::abs((((int) hash_fn(line.substr(0, pos)))%10000000)/10000000.0) > 0.01){
-                num = std::abs((((int) hash_fn(line.substr(0, pos)))%10000000)/10000000.0); 
-                start = false;
-                break;
-            }
             else{
                 words.push_back(line.substr(0, pos));
             }
             line.erase(0, pos + delim.length());
             start = false;
         }
-        if (i!=0 && num < 0.01){
+        if (i!=0){
             table1.push_back(words);
             std::cout << i << std::endl;
         }
@@ -80,18 +75,13 @@ Join::Join(std::string input1, std::string input2, std::string join_key){
                 }
                 cols2.push_back(line.substr(0, pos));
             }
-            else if (start && std::abs((((int) hash_fn(line.substr(0, pos)))%10000000)/10000000.0) > 0.01){
-                num = std::abs((((int) hash_fn(line.substr(0, pos)))%10000000)/10000000.0); 
-                start = false;
-                break;
-            }
             else{
                 words.push_back(line.substr(0, pos));
             }
             line.erase(0, pos + delim.length());
             start = false;
         }
-        if (i!=0 && num < 0.01){
+        if (i!=0){
             table2.push_back(words);
             std::cout << i << std::endl;
         }
