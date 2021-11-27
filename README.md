@@ -4,11 +4,16 @@
 
 # CS411ExtraCredit
 
-Commands to run with provided (Nation and Region Files). Run these commands to verify correctness from the direcotry where main.cpp is located
+Commands to run JOINS with Nation and Region Files
 
+*NOTE region.tbl files and nation.tbl files are already provided in the data folder of this repo
+1. Clone the Repo
+2. Navigate to the directory where main.cpp is located and run the following commands
 
 # Compilation Command: 
     g++ -std=c++11  main.cpp join.cpp
+
+### RUN these commands for SAMPLE CSV FILES (nation.tbl and region.tbl)
 
 # Run NESTED LOOP JOIN (write to file looptest.tbl): 
     ./a.out ./data/region.tbl REGIONKEY  ./data/nation.tbl NESTED_LOOP  looptest.tbl
@@ -18,8 +23,7 @@ Commands to run with provided (Nation and Region Files). Run these commands to v
 
 # BENCHMARKING
 
-BENCHMARKS Given for the JOIN of LINEITEMS and ORDERS on ORDERKEY
-    ALL MARKS of the AVERAGE of 10 runs:
+BENCHMARKS for the joins of LINEITEMS and ORDERS on ORDERKEY
     
     NESTED LOOP JOIN STATISTICS:
         Iteration 0 took: 130488240 microseconds
@@ -50,4 +54,4 @@ BENCHMARKS Given for the JOIN of LINEITEMS and ORDERS on ORDERKEY
 
 DISCLAIMER: Since DATASET was too large, used Dr.Park's recoomendation and used a hash to cut the overall amount of data. Used a hash on ORDERKEY with a threshold of hash(ORDERKEY) < 0.01
 
-Note that in the code implementation, the commented Code contains the hash filtering mechanism. It is commented out since it is not needed for running the smaller tests on Nation and Region Files Verifying for Correctness.
+Note that in the code implementation, the commented Code contains the hash filtering mechanism. It is commented out since it is not needed for running the smaller tests on Nation and Region Files.
